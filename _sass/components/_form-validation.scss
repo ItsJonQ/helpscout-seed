@@ -22,3 +22,19 @@ $HSS-form-validation__message-padding:  2px;
   transform: translateY(100%);
   z-index: $HSS-z-index--validation;
 }
+
+
+// States
+.#{$HSS-form-validation-namespace}__message {
+  &.is-danger {
+    background-color: $HSS-color-danger--bg;
+    border-color: $HSS-color-danger--border;
+    color: $HSS-color-danger--text;
+  }
+
+  &.is-success {
+    background-color: $HSS-color-success--bg;
+    border-color: $HSS-color-success--border;
+    color: $HSS-color-success--text;
+  }
+}

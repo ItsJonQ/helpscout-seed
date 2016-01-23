@@ -26,3 +26,23 @@ $HSS-input-namespace: "c-form-control" !default;
     outline: none;
   }
 }
+
+
+// States
+.#{$HSS-input-namespace} {
+  &.is-danger {
+    border-color: $HSS-color-danger--text;
+
+    &:focus {
+      box-shadow: 0 0 2px $HSS-color-danger--text;
+    }
+  }
+
+  &.is-success {
+    border-color: $HSS-color-success--text;
+
+    &:focus {
+      box-shadow: 0 0 2px $HSS-color-success--text;
+    }
+  }
+}

@@ -3,38 +3,4 @@
 ---
 @charset "utf-8";
 
-//
-// Settings / Config
-//
-@import "variables/typography";
-@import "variables/color";
-@import "variables/border";
-@import "variables/forms";
-@import "variables/grid";
-@import "variables/z-index";
-
-
-//
-// Mixins
-//
-@import "mixins/width";
-
-
-//
-// Base
-//
-@import "base/normalize";
-@import "base/base";
-
-
-//
-// Components
-//
-@import "components/form-validation";
-@import "components/input";
-
-
-//
-// Utilities
-//
-@import "utilities/width";
+@import "seed";

@@ -1,0 +1,18 @@
+// Mixins :: Width
+
+@mixin HSS-make-width($i: 1) {
+  @for $i from (1) through $HSS-grid-columns {
+    .u-width-#{$i} {
+      width: percentage( ( $i / $HSS-grid-columns ) ) !important;
+    }
+  }
+}
+
+@mixin HSS-make-width--fixed($i: 1) {
+  @for $i from (1) through $HSS-grid-columns {
+    .u-width-#{$i}--fixed {
+      max-width: 100%;
+      width: ceil( ( $i / $HSS-grid-columns ) * $HSS-grid-container-width ) - $HSS-grid-gutter !important;
+    }
+  }
+}

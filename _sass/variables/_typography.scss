@@ -1,0 +1,19 @@
+// Variables :: Typography
+
+// Font Family
+$HSS-font-family-sans-serif:        "Helvetica", "Arial", "Sans-Serif" !default;
+$HSS-font-family-serif:             "Georgia", "Serif" !default;
+$HSS-font-family-base:              $HSS-font-family-sans-serif !default;
+
+// Font Size
+$HSS-font-size-base:                14px !default;
+$HSS-font-size--sm:                 13px !default;
+$HSS-font-size--xs:                 12px !default;
+
+// Font Line Heights
+$HSS-line-height-base:              1.5 !default;
+$HSS-line-height--sm:               1.2 !default;
+
+// Font Weights
+$HSS-font-weight-base:              normal !default;
+$HSS-font-weight-bold:              bold !default;

@@ -1,0 +1,25 @@
+// Variables :: Color
+
+// Base
+$HSS-color-white:           #fff !default;
+$HSS-color-gray:            #aaa !default;
+$HSS-color-gray--lighter:   #f1f3f4 !default;
+$HSS-color-gray--light:     #ccc !default;
+$HSS-color-gray--darker:    #2b2b2b !default;
+
+
+// Branding
+$HSS-color-branding:         #3f8abf !default;
+$HSS-color-primary:          $HSS-color-branding !default;
+
+
+// States
+$HSS-color-success--bg:      #dff0d8 !default;
+$HSS-color-success--border:  darken($HSS-color-success--bg, 16) !default;
+$HSS-color-success--text:    #3c763d !default;
+$HSS-color-danger--bg:       #f2dede !default;
+$HSS-color-danger--border:   darken($HSS-color-danger--bg, 16) !default;
+$HSS-color-danger--text:     #DA3838 !default;
+$HSS-color-warning--bg:      #fcf8e3 !default;
+$HSS-color-warning--border:  darken($HSS-color-warning--bg, 16) !default;
+$HSS-color-warning--text:    #8a6d3b !default;

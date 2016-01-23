@@ -1,0 +1,22 @@
+// Base :: Base
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $HSS-font-size-base;
+  line-height: $HSS-line-height-base;
+}
+
+body {
+  background-color: $HSS-color-gray--lighter;
+  color: $HSS-color-gray--darker;
+  font-family: $HSS-font-family-base;
+  font-weight: $HSS-font-weight-base;
+  margin: 0;
+  padding: 0 0;
+  width: 100%;
+}

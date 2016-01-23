@@ -1,0 +1,28 @@
+// Componets :: Inputs
+
+$HSS-input-namespace: "c-form-control" !default;
+
+.#{$HSS-input-namespace} {
+  background-color: $HSS-color-white;
+  border: $HSS-border;
+  border-radius: $HSS-border-radius;
+  display: inline-block;
+  font-size: $HSS-font-size-base;
+  min-height: $HSS-form-height;
+  min-width: $HSS-form-width--min;
+  line-height: $HSS-form-line-height;
+  padding: $HSS-form-padding;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  z-index: $HSS-z-index--base;
+
+  &:hover {
+    border-color: $HSS-color-gray;
+  }
+
+  &:focus {
+    border-color: $HSS-color-branding;
+    outline: none;
+  }
+}

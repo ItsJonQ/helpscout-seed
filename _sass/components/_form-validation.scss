@@ -1,0 +1,24 @@
+// Components :: Form Validation
+
+$HSS-form-validation-namespace: "c-form-validation" !default;
+
+$HSS-form-validation__message-padding:  2px;
+
+.#{$HSS-form-validation-namespace} {
+  position: relative;
+}
+
+.#{$HSS-form-validation-namespace}__message {
+  background-color: $HSS-color-warning--bg;
+  border: 1px solid $HSS-color-warning--border;
+  border-radius: $HSS-border-radius;
+  bottom: 0;
+  color: $HSS-color-warning--text;
+  display: block;
+  font-size: $HSS-font-size--xs;
+  line-height: $HSS-line-height--sm;
+  position: absolute;
+  padding: $HSS-form-validation__message-padding;
+  transform: translateY(100%);
+  z-index: $HSS-z-index--validation;
+}

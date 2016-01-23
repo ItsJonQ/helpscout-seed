@@ -1,0 +1,13 @@
+// Variables :: Forms
+
+// Sizing
+$HSS-form-height:             36px !default;
+$HSS-form-height--sm:         28px !default;
+$HSS-form-width--min:         48px !default;
+
+// Line Height
+$HSS-form-line-height:        $HSS-form-height - 2px !default;
+$HSS-form-line-height--sm:    $HSS-form-height--sm - 2px !default;
+
+// Spacing
+$HSS-form-padding:            0 0.8rem !default;

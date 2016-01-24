@@ -7,6 +7,7 @@
     }
 
     this.$el = $el;
+    this.events = $({});
     this.options = {
       validation: false
     };
@@ -28,12 +29,6 @@
     this.actions();
   };
 
-  HSInput.prototype.actions = function() {
-    var _this = this;
-    this.$input.on('input', function() {
-      _this.validate();
-    });
-  };
 
   //
   // Validation
@@ -48,6 +43,16 @@
     this.$validationMessage.hide();
   };
 
+  HSInput.prototype.isBlank = function() {
+    var value = this.$input.val();
+    return value.length === 0;
+  };
+
+  HSInput.prototype.isValid = function() {
+    var value = this.$input.val();
+    return this.options.validation.validate(value);
+  };
+
   HSInput.prototype.validate = function() {
     if(!this.options.validation || !this.options.validation.validate) {
       return false;
@@ -57,45 +62,82 @@
       return false;
     }
 
-    var value = this.$input.val();
+    if(this.isBlank()) {
+      this.events.trigger('hs-input:validation:reset');
+      return;
+    }
 
-    if(this.options.validation.validate(value)) {
-      this.validationSuccess();
+    if(this.isValid()) {
+      this.events.trigger('hs-input:validation:success');
     } else {
-      this.validationError();
+      this.events.trigger('hs-input:validation:error');
     }
-  };
-
-  HSInput.prototype.validationSuccess = function() {
-    var message = 'Success';
-
-    if(this.options.validation.success) {
-      message = this.options.validation.success;
-    }
-
-    this.renderValidation(message);
-  };
-
-  HSInput.prototype.validationError = function() {
-    var message = 'Somethings not right.…';
-
-    if(this.options.validation.error) {
-      message = this.options.validation.error;
-    }
-
-    this.renderValidation(message);
   };
 
   //
   // Rendering
   //
-  HSInput.prototype.renderValidation = function(message) {
+  HSInput.prototype.renderSuccess = function(message) {
+    message = this.options.validation.success ? this.options.validation.success : message;
+
     if(!message) {
-      return;
+      message = 'Success';
     }
 
     this.$validationMessage.show();
     this.$validationMessage.html(message);
+
+    this.$validationMessage
+      .removeClass('is-danger')
+      .addClass('is-success');
+
+    this.$input
+      .removeClass('is-danger')
+      .addClass('is-success');
+  };
+
+  HSInput.prototype.renderError = function(message) {
+    message = this.options.validation.error ? this.options.validation.error : message;
+
+    if(!message) {
+      message = 'Error';
+    }
+
+    this.$validationMessage.show();
+    this.$validationMessage.html(message);
+
+    this.$validationMessage
+      .removeClass('is-success')
+      .addClass('is-danger');
+
+    this.$input
+      .removeClass('is-success')
+      .addClass('is-danger');
+  };
+
+  HSInput.prototype.renderReset = function() {
+    this.$input
+      .removeClass('is-success')
+      .removeClass('is-danger');
+
+    this.$validationMessage
+      .hide()
+      .html('');
+  };
+
+  //
+  // Actions
+  //
+
+  HSInput.prototype.actions = function() {
+    var _this = this;
+
+    this.$input.on('input focus change', this.validate.bind(this));
+    this.$input.on('blur', this.renderReset.bind(this));
+
+    this.events.on('hs-input:validation:success', this.renderSuccess.bind(this));
+    this.events.on('hs-input:validation:error', this.renderError.bind(this));
+    this.events.on('hs-input:validation:reset', this.renderReset.bind(this));
   };
 
   // Exporting

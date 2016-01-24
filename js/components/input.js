@@ -61,13 +61,22 @@
 
 
   // Computed
+  HSInput.prototype.value = function(val) {
+    if(val) {
+      this.$input.val(val);
+      this.events.trigger('hs-input:validation:validate');
+    }
+
+    return this.$input.val();
+  };
+
   HSInput.prototype.isBlank = function() {
-    var value = this.$input.val();
+    var value = this.value();
     return value.length === 0;
   };
 
   HSInput.prototype.isValid = function() {
-    var value = this.$input.val();
+    var value = this.value();
     return this.options.validation.validate(value);
   };
 
@@ -165,6 +174,8 @@
 
     this.$input.on('input focus change', this.validate.bind(this));
     this.$input.on('blur', this.renderReset.bind(this));
+
+    this.events.on('hs-input:validation:validate', this.validate.bind(this));
 
     this.events.on('hs-input:validation:success', this.renderSuccess.bind(this));
     this.events.on('hs-input:validation:error', this.renderError.bind(this));

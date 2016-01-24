@@ -116,13 +116,15 @@
   };
 
   HSInput.prototype.renderReset = function() {
-    this.$input
-      .removeClass('is-success')
-      .removeClass('is-danger');
-
     this.$validationMessage
       .hide()
       .html('');
+
+    if(this.isBlank()) {
+      this.$input
+        .removeClass('is-success')
+        .removeClass('is-danger');
+    }
   };
 
   //

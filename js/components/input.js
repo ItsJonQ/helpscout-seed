@@ -116,7 +116,6 @@
     this.$validationIcon
       .html('<i class="icon icon--lg ion-ios-checkmark-outline u-text-success"></i>')
       .show();
-    t
   };
 
   HSInput.prototype.renderError = function(message) {

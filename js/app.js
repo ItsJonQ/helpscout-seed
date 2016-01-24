@@ -1,6 +1,10 @@
 (function($) { 'use strict';
 
-  window.APP = {};
+  window.APP = {
+    potatoInput: []
+  };
+
+  var HSInput = window.HelpscoutSeed.components.HSInput;
 
   var $input = $('[data-component="hs-input"]');
   var options = {
@@ -8,11 +12,15 @@
       validate: function(value) {
         return value === 'POTATO';
       },
-      error: 'MUST BE "POTATO"',
+      error: 'Answer must be "POTATO"',
       success: 'Yay! Thanks <3'
     }
   };
 
-  APP.potatoInput = new window.HelpscoutSeed.components.HSInput($input, options);
+  $input.each(function() {
+    var $this = $(this);
+    var inputComponent = new HSInput($this, options);
+    window.APP.potatoInput.push(inputComponent);
+  });
 
 })(jQuery);

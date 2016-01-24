@@ -53,8 +53,14 @@
     this.$validationMessage = $('<div class="c-form-validation__message"></div>');
     this.$el.append(this.$validationMessage);
     this.$validationMessage.hide();
+
+    this.$validationIcon = $('<div class="c-form-validation__icon"></div>');
+    this.$el.append(this.$validationIcon);
+    this.$validationIcon.hide();
   };
 
+
+  // Computed
   HSInput.prototype.isBlank = function() {
     var value = this.$input.val();
     return value.length === 0;
@@ -64,6 +70,7 @@
     var value = this.$input.val();
     return this.options.validation.validate(value);
   };
+
 
   HSInput.prototype.validate = function() {
     if(!this.options.validation || !this.options.validation.validate) {
@@ -96,16 +103,20 @@
       message = 'Success';
     }
 
-    this.$validationMessage.show();
-    this.$validationMessage.html(message);
-
     this.$validationMessage
+      .html(message)
       .removeClass('is-danger')
-      .addClass('is-success');
+      .addClass('is-success')
+      .show();
 
     this.$input
       .removeClass('is-danger')
       .addClass('is-success');
+
+    this.$validationIcon
+      .html('<i class="icon icon--lg ion-ios-checkmark-outline u-text-success"></i>')
+      .show();
+    t
   };
 
   HSInput.prototype.renderError = function(message) {
@@ -115,16 +126,19 @@
       message = 'Error';
     }
 
-    this.$validationMessage.show();
-    this.$validationMessage.html(message);
-
     this.$validationMessage
+      .html(message)
       .removeClass('is-success')
-      .addClass('is-danger');
+      .addClass('is-danger')
+      .show();
 
     this.$input
       .removeClass('is-success')
       .addClass('is-danger');
+
+    this.$validationIcon
+      .html('<i class="icon icon--lg ion-ios-close-outline u-text-danger"></i>')
+      .show();
   };
 
   HSInput.prototype.renderReset = function() {
@@ -136,6 +150,10 @@
       this.$input
         .removeClass('is-success')
         .removeClass('is-danger');
+
+      this.$validationIcon
+        .hide()
+        .html('');
     }
   };
 

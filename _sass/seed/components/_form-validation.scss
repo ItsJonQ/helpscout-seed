@@ -3,6 +3,8 @@
 $HSS-form-validation-namespace: "c-form-validation" !default;
 
 $HSS-form-validation__message-padding:  2px;
+$HSS-form-validation__icon-offset:      10px;
+
 
 .#{$HSS-form-validation-namespace} {
   position: relative;
@@ -23,6 +25,22 @@ $HSS-form-validation__message-padding:  2px;
   z-index: $HSS-z-index--validation;
 }
 
+.#{$HSS-form-validation-namespace}__icon {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+
+  bottom: 0;
+  padding-left: $HSS-form-validation__icon-offset;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+}
 
 // States
 .#{$HSS-form-validation-namespace}__message {

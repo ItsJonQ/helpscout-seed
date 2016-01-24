@@ -16,6 +16,18 @@
       $.extend(this.options, options);
     }
 
+    // TODO: Add state
+    // In the DOM, the component appears to be aware of state. That
+    // is because the component re-renders everytime it is interacted
+    // with. In isolation, this isn't too bad. However, this is
+    // unnecessarily expensive.
+    //
+    // The DOM element should ONLY re-render once the state
+    // of the component has changed.
+    //
+    // e.g.
+    // invalid -> valid
+
     this.initialize();
   };
 
